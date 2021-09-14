@@ -1,4 +1,8 @@
 call plug#begin("~/.config/nvim/plugged")
+" treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-treesitter/playground'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'google/vim-maktaba'
@@ -45,6 +49,9 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'lighttiger2505/deoplete-vim-lsp'
+" debugging
+Plug 'szw/vim-maximizer'
+Plug 'puremourning/vimspector'
 "alway last
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
@@ -52,6 +59,14 @@ call plug#end()
 set autoread
 set rnu nu
 set encoding=utf-8
+set cmdheight=2
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" " when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" " On pressing tab, insert 4 spaces
+set expandtab
 
 let mapleader = " "
 " set vim backup files direcotry to tmp
@@ -84,6 +99,7 @@ let g:syntastic_mode_map = {
 			\ "passive_filetypes": [] }
 let g:neomake_serialize = 1
 let g:neomake_serialize_abort_on_error = 1
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools' ]
 set mouse=n
 let g:rooter_patterns = ['WORKSPACE']
 
@@ -111,3 +127,4 @@ nnoremap <leader>blame :Gblame<CR>
 :runtime autoformat.vim
 :runtime bindings.vim
 :runtime ctrlsf.vim
+:runtime debug.vim

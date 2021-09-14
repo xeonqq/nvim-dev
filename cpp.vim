@@ -49,6 +49,7 @@ function! CopyAsInclude()
 	let file_path = expand('%')
 	let include_path = '#include "'.file_path.'"'."\n"
 	let @i=include_path
+	let @"=include_path
 endfunction
 
 function! AdaptFilePath(filepath, pattern, replacement)
@@ -111,7 +112,7 @@ let c_no_curly_error=1
 autocmd FileType cpp,c nnoremap <leader>ge :call GoToError()<CR>
 autocmd FileType cpp,c nnoremap <leader>ai :call AddInclude()<CR>
 autocmd FileType cpp,c nnoremap <leader>th :call SwitchSourceHeader()<CR>
-autocmd FileType cpp,c nnoremap <leader>ci :call CopyAsInclude()<CR>
+autocmd FileType cpp,c nnoremap <leader>yi :call CopyAsInclude()<CR>
 autocmd FileType cpp,c nnoremap <leader>pi :call PasteInclude()<CR>
 autocmd FileType cpp,c nnoremap <silent> ev :call EvalGdb()<CR>
 autocmd FileType cpp,c vnoremap <silent> ev :call VEvalGdb()<CR>

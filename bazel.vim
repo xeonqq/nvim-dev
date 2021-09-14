@@ -1,10 +1,3 @@
-function GoToBazelTarget()
-  let current_file = expand("%:t")
-  let pattern = "\\V\\<" . current_file . "\\>"
-  exe "edit" findfile("BUILD", ".;")
-  call search(pattern, "w", 0, 500)
-endfunction
-
 function YankBazelTarget()
   let s:saved_rooter_patterns = g:rooter_patterns
   let g:rooter_patterns = ["WORKSPACE"]
@@ -19,6 +12,14 @@ function YankBazelTarget()
   return s:bazel_target_str
 endfunction
 
+let g:bazel_config = get(g:, 'bazel_config', "--config=adp_gcc9 ")
+autocmd FileType bzl nnoremap <buffer> gd :call GoToBazelDefinition()<CR>
 nnoremap <leader>gb :call GoToBazelTarget()<CR>
 nnoremap <leader>yb :call YankBazelTarget()<CR>
+nnoremap <Leader>bt  :call RunBazelHere("test " . g:bazel_config)<CR>
+nnoremap <Leader>bb  :call RunBazelHere("build " . g:bazel_config)<CR>
+nnoremap <Leader>br  :call RunBazelHere("run " . g:bazel_config)<CR>
+nnoremap <Leader>bdb :call RunBazelHere("build " . g:bazel_config . " -c dbg " . "-copt='-g'")<CR>
+nnoremap <Leader>bdt :lua  DebugThisTest()<CR>
+nnoremap <Leader>bl  :call RunBazel()<CR>
 
