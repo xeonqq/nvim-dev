@@ -9,7 +9,7 @@ nnoremap <C-e> :NERDTreeRefreshRoot<CR>
 inoremap <C-e> :NERDTreeRefreshRoot<CR>
 vmap <C-e> :NERDTreeRefreshRoot<CR>
 
-nnoremap <leader>tq :NERDTreeClose<CR>
+nnoremap <leader>nq :NERDTreeClose<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <silent>gb <C-^>
 

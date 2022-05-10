@@ -9,3 +9,4 @@ nnoremap <C-s>t :CtrlSFToggle<CR>
 let g:ctrlsf_auto_focus = {"at": "start"}
 let g:ctrlsf_confirm_save = 0
 let g:ctrlsf_auto_preview = 1
+let g:ctrlsf_context = '-B 4 -A 4'

@@ -3,11 +3,6 @@ nnoremap <C-Left> :vertical resize +5<CR>
 nnoremap <C-Up> :resize -5<CR>
 nnoremap <C-Down> :resize +5<CR>
 
-nmap <c-k> :wincmd k<CR>
-nmap <c-j> :wincmd j<CR>
-nmap <c-h> :wincmd h<CR>
-nmap <c-l> :wincmd l<CR>
-
 nmap <leader>p "+p
 vmap <leader>p "+p
 nmap <leader>y "+y

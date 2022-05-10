@@ -20,6 +20,7 @@ Plug 'powerline/powerline'
 Plug 'chrisbra/vim-autoread'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'cj/vim-webdevicons'
+Plug 'whiteinge/diffconflicts'
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'dag/vim-fish'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -74,14 +75,17 @@ let tmp_dir=system('mktemp -d -t nvim-XXXXXXXXXX')
 exe 'set backupdir='.tmp_dir
 exe 'set directory='.tmp_dir
 "happy_hacking deep_focus
-colorscheme gruvbox 
+"gruvbox 
+colorscheme hybrid
+highlight MatchParen cterm=bold,reverse
 
 "set list
 "set listchars+=tab:-->
 "set list listchars=tab:>-,nbsp:.,trail:.,extends:>,precedes:<,space: 
 "set lazyredraw
 
-set ignorecase
+"set ignorecase
+set smartcase
 set cursorline
 "set cursorcolumn
 command! Q :qa!
@@ -101,7 +105,7 @@ let g:neomake_serialize = 1
 let g:neomake_serialize_abort_on_error = 1
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools' ]
 set mouse=n
-let g:rooter_patterns = ['WORKSPACE']
+let g:rooter_patterns = ['WORKSPACE','SConstruct']
 
 set noautochdir
 

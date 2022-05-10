@@ -66,12 +66,12 @@ function! SwitchSourceHeader()
     let fileending = expand("%:e")
     if (fileending == "cpp")
         let filetype = ".h"
-        let filepath = AdaptFilePath(filepath, "/src", "includes/**")
+        let filepath = AdaptFilePath(filepath, "/src", "include/**")
         let filepath = AdaptFilePath(filepath, "/Sources", "Includes/**")
     endif
     if (fileending == "h")
         let filetype = ".cpp"
-        let filepath = AdaptFilePath(filepath, "/includes", "src/**")
+        let filepath = AdaptFilePath(filepath, "/include", "src/**")
         let filepath = AdaptFilePath(filepath, "/Includes", "Sources/**")
     endif
     exe "find " . filepath . "/" . filename . filetype

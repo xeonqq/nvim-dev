@@ -20,6 +20,12 @@ function! RipgrepFzf(query, fullscreen)
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 
+function! RgNoReloadFzf(query, fullscreen)
+    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s'
+    let initial_command = printf(command_fmt, shellescape(a:query))
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(), a:fullscreen)
+endfunction
+
 "insert path
 function! Paste(value)
 	:call setreg('p', a:value)
@@ -42,11 +48,19 @@ endfunction
 
 imap <C-p> <ESC>:call PasteYankStack()<CR>
 nnoremap <C-p> :call PasteYankStack()<CR>
-nnoremap <S-f> :call RipgrepFzf(expand("<cword>"), 1)<CR>
+nnoremap <S-f> :call RgNoReloadFzf(expand("<cword>"), 1)<CR>
 vmap <S-f> :call VisualRG()<CR>
 nnoremap <tab> :Buffers<cr>
+nnoremap <leader>s :call RipgrepFzf("", 1)<CR>
+nnoremap <leader>f :call RipgrepFzf(getreg("+"), 1)<CR>
+" Path completion with custom source command
+" inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
 
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --colors path:fg:cyan --smart-case ".<q-args>, 1, fzf#vim#with_preview(), <bang>0)
+" Word completion with custom spec with popup layout option
+"inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
+
+command! -bang -nargs=+ -complete=dir Rag call fzf#vim#ag_raw(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 command! -bang -nargs=? -complete=dir Buffers
     \ call fzf#vim#buffers(<q-args>, {'options': ['--info=inline']}, <bang>0)
 
