@@ -1,8 +1,8 @@
 call plug#begin("~/.config/nvim/plugged")
 " treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-Plug 'nvim-treesitter/playground'
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+"Plug 'nvim-treesitter/playground'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'google/vim-maktaba'
@@ -69,6 +69,7 @@ set shiftwidth=4
 " " On pressing tab, insert 4 spaces
 set expandtab
 
+
 let mapleader = " "
 " set vim backup files direcotry to tmp
 let tmp_dir=system('mktemp -d -t nvim-XXXXXXXXXX')
@@ -77,7 +78,7 @@ exe 'set directory='.tmp_dir
 "happy_hacking deep_focus
 "gruvbox 
 colorscheme hybrid
-highlight MatchParen cterm=bold,reverse
+highlight MatchParen ctermbg=black ctermfg=white guibg=black guifg=white
 
 "set list
 "set listchars+=tab:-->
